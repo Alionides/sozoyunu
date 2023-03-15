@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Söz oyunu</title>
+  <style>
+    .match {
+      background-color: #b59f3b;
+    }
+    .exactMatch {
+      background-color: #538d4e;
+    }
+  </style>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="bg-gradient-to-bl from-green-400 to-blue-500 h-screen" x-data="wordle" @keyup="processKey($event)">
+  <section class="container mx-auto pt-20">
+    <h1 class="text-white text-4xl text-center pt-10">Söz Oyunu</h1>
+    <div class="flex flex-col pt-10 space-y-3">
+      <template x-for="word in words">
+        <div class="flex justify-center mt-10 space-x-2">
+          <template x-for="letter in word">
+            <div class="border-1 w-20 h-20 border-white flex text-4xl" x-bind:class="{match:letter.match,exactMatch:letter.exactMatch}">
+              <span class="m-auto uppercase" x-text="letter.value"></span>
+            </div>
+          </template>
+        </div>
+      </template>
+
+      <template x-if="locked">
+        <div class="pt-10 text-white text-4xl text-center">
+          Düzgün söz deyil. Təmizlə...
+        </div>
+      </template>
+
+      <template x-if="showResult">
+        <div class="pt-10 text-white text-4xl text-center">
+          Günün sözü = <span class="uppercase" x-text='todaysWord'></span>
+        </div>
+      </template>
+
+      <div x-show="gameOver" class="pt-10 text-white text-center">
+        <button @click="restart()" class="bg-dark-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+          Yenidən başlat
+        </button>
+
+        <button x-show="!showResult" @click="showResult=true" class="bg-dark-500 hover:bg-red-700 text-white font-bold py-2 px-4  ml-5 rounded">
+          Nəticəni göstər
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.12.0/dist/cdn.min.js"></script>
+  <script src="assets/js/possibilities.js"></script>
+  <script src="assets/js/game.js"></script>
+</body>
+
+</html>
