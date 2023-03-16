@@ -1,4 +1,5 @@
 const possibilities = [
+    "almaz",
     "abxaz",
     "abidə",
     "acgöz",
@@ -202,6 +203,12 @@ const possibilities = [
     "pagan",
     "rayon",
     "salon",
+    "saray",
+    "sirab",
+    "sakit",
+    "samit",
+    "suiti",
+    "sumax",
     "qoyun",
     "sonra",
     "toxum",
