@@ -23,6 +23,48 @@ const wordle = {
     })
   },
 
+  keyboardKey(id){
+//process the keystrokes
+    if (this.gameOver && id == "Enter") {
+      this.restart()
+    }
+
+    if (this.gameOver || this.locked) {
+      //no more keystroke processing if in locked state or if the game is over
+      return
+    }
+
+    if (id == "Backspace") {
+      this.restart() //i added this code
+      //remove the last entered letter
+      if (this.offset == this.offsetLock) {
+        return
+      }
+      this.offset--
+      this.currentWordPosition = this.getCurrentWordPosition()
+
+      this.words[this.currentWordPosition][this.offset % 5].value = ""
+    }
+
+    if ("abcdefghijklmnopqrstuvwxyzəışçöüğ".includes(id)) {
+      //ok it's a valid alpha input
+      this.currentWordPosition = this.getCurrentWordPosition()
+      this.words[this.currentWordPosition][this.offset % 5].value = id
+      if (this.offset % 5 == 4) {
+        //current word array is filled up, so check if the entry matched
+        this.match()
+      }
+      this.offset++
+
+      if (this.offset == 25) {
+        //input complete for all letters, game is over
+        this.gameOver = true
+        return
+      }
+    }
+
+  },
+  ////////
   processKey(event) {
     //process the keystrokes
     if (this.gameOver && event.key == "Enter") {

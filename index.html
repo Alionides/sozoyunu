@@ -13,14 +13,59 @@
     .exactMatch {
       background-color: #538d4e;
     }
+    .kbd{
+      cursor: pointer;
+    }
   </style>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.4/dist/full.css" rel="stylesheet" type="text/css" />
 </head>
 
-<body class="bg-gradient-to-bl from-green-400 to-blue-500 h-screen" x-data="wordle" @keyup="processKey($event)">
+<body class="bg-gradient-to-bl from-green-400 to-blue-500 h-screen11" x-data="wordle" @keyup="processKey($event)">
   <section class="container mx-auto pt-20">
     <h1 class="text-white text-4xl text-center pt-10">Söz Oyunu</h1>
-    <div class="flex flex-col pt-10 space-y-3">
+      <div class="flex flex-col pt-0 space-y-5" x-data="{id:null}">
+        <div class="flex flex-col pt-0 space-y-3" x-data="{id:null}">
+          <div class="flex justify-center gap-1 my-1 w-full">
+            <kbd class="kbd" :id="id" @click="id = 'q'; keyboardKey(id)">q</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'ə'; keyboardKey(id)">ə</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'e'; keyboardKey(id)">e</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'r'; keyboardKey(id)">r</kbd>
+            <kbd class="kbd" :id="id" @click="id = 't'; keyboardKey(id)">t</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'y'; keyboardKey(id)">y</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'u'; keyboardKey(id)">u</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'ü'; keyboardKey(id)">ü</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'i'; keyboardKey(id)">i</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'ı'; keyboardKey(id)">ı</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'o'; keyboardKey(id)">o</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'ö'; keyboardKey(id)">ö</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'p'; keyboardKey(id)">p</kbd>
+          </div>
+          <div class="flex justify-center gap-1 my-1 w-full">
+            <kbd class="kbd" :id="id" @click="id = 'a'; keyboardKey(id)">a</kbd>
+            <kbd class="kbd" :id="id" @click="id = 's'; keyboardKey(id)">s</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'ş'; keyboardKey(id)">ş</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'd'; keyboardKey(id)">d</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'f'; keyboardKey(id)">f</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'g'; keyboardKey(id)">g</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'ğ'; keyboardKey(id)">ğ</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'h'; keyboardKey(id)">h</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'j'; keyboardKey(id)">j</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'k'; keyboardKey(id)">k</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'l'; keyboardKey(id)">l</kbd>
+          </div>
+          <div class="flex justify-center gap-1 my-1 w-full">
+            <kbd class="kbd" :id="id" @click="id = 'z'; keyboardKey(id)">z</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'x'; keyboardKey(id)">x</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'c'; keyboardKey(id)">c</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'ç'; keyboardKey(id)">ç</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'v'; keyboardKey(id)">v</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'b'; keyboardKey(id)">b</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'n'; keyboardKey(id)">n</kbd>
+            <kbd class="kbd" :id="id" @click="id = 'm'; keyboardKey(id)">m</kbd>
+          </div>
+
+
       <template x-for="word in words">
         <div class="flex justify-center mt-10 space-x-2">
           <template x-for="letter in word">
